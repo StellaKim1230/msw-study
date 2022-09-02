@@ -43,5 +43,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.5.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
