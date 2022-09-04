@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Container,
+  Heading,
+  Stack,
+  Input,
+  Group,
+  Button,
+} from '@co-design/core'
+import { useEffect, useState } from 'react'
+import './App.css'
+import { ResponseItem } from './types/item'
+
+import { Items } from './components/Items'
 
 function App() {
+  const [items, setItems] = useState<ResponseItem[]>([])
+
+  useEffect(() => {
+    fetch('/items')
+      .then((response) => response.json())
+      .then((data) => setItems(data))
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container
+      size={1152}
+      padding={16}
+      co={{ paddingTop: 24, paddingBottom: 24 }}
+    >
+      <Stack spacing="large" co={{ textAlign: 'center' }}>
+        <Heading level={1} strong>
+          Todo
+        </Heading>
+        <Group position="center">
+          <Input co={{ width: 400 }} />
+          <Button>입력</Button>
+        </Group>
+        <Items items={items} />
+      </Stack>
+    </Container>
+  )
 }
 
-export default App;
+export default App
