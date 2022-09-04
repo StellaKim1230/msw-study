@@ -13,13 +13,7 @@ export const getItems = rest.get('/items', (req, res, ctx) => {
   for (let i = 0; i < 10; i += 1) {
     const item = {
       id: v4(),
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      age: faker.datatype.number({ min: 18, max: 69 }),
-      email: faker.internet.email(),
-      city: faker.address.cityName(),
-      avatar: faker.image.avatar(),
-      information: faker.lorem.words(20),
+      todo: faker.random.words(10),
     }
 
     items.push(item)

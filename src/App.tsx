@@ -6,20 +6,34 @@ import {
   Group,
   Button,
 } from '@co-design/core'
-import { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import { ResponseItem } from './types/item'
 
 import { Items } from './components/Items'
+import { v4 } from 'uuid'
 
 function App() {
   const [items, setItems] = useState<ResponseItem[]>([])
+  const [keyword, setKeyword] = useState<string>('')
 
   useEffect(() => {
     fetch('/items')
       .then((response) => response.json())
       .then((data) => setItems(data))
   }, [])
+
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) =>
+    setKeyword(e.currentTarget.value)
+
+  const handleClick = useCallback(() => {
+    setItems([...items, { id: v4(), todo: keyword }])
+    setKeyword('')
+  }, [keyword])
+
+  const handleDelete = (id: string) => {
+    setItems((old) => old.filter((item) => item.id !== id))
+  }
 
   return (
     <Container
@@ -32,10 +46,10 @@ function App() {
           Todo
         </Heading>
         <Group position="center">
-          <Input co={{ width: 400 }} />
-          <Button>입력</Button>
+          <Input value={keyword} co={{ width: 400 }} onChange={handleChange} />
+          <Button onClick={handleClick}>할일 입력</Button>
         </Group>
-        <Items items={items} />
+        <Items items={items} onDelete={handleDelete} />
       </Stack>
     </Container>
   )

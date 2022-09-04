@@ -5,7 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { worker } from './mocks/browser'
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.REACT_APP_WORKER === 'MOCK') {
   worker.start()
 }
 

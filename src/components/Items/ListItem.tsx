@@ -1,11 +1,12 @@
-import { Avatar, useCoTheme } from '@co-design/core'
+import { useCoTheme, Button, Group, Text } from '@co-design/core'
 import { ResponseItem } from '../../types/item'
 
 interface Props {
   item: ResponseItem
+  onDelete(id: string): void
 }
 
-export const ListItem = ({ item }: Props) => {
+export const ListItem = ({ item, onDelete }: Props) => {
   const theme = useCoTheme()
   return (
     <tr key={item.id}>
@@ -16,52 +17,17 @@ export const ListItem = ({ item }: Props) => {
           borderBottom: `1px solid ${theme.palettes.gray[2]}`,
         }}
       >
-        <Avatar src={item.avatar} alt="avatar" size={32} />
-      </td>
-      <td
-        style={{
-          textAlign: 'left',
-          padding: 12,
-          borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-        }}
-      >
-        {item.lastName}
-      </td>
-      <td
-        style={{
-          textAlign: 'left',
-          padding: 12,
-          borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-        }}
-      >
-        {item.firstName}
-      </td>
-      <td
-        style={{
-          textAlign: 'left',
-          padding: 12,
-          borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-        }}
-      >
-        {item.age}
-      </td>
-      <td
-        style={{
-          textAlign: 'left',
-          padding: 12,
-          borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-        }}
-      >
-        {item.email}
-      </td>
-      <td
-        style={{
-          textAlign: 'left',
-          padding: 12,
-          borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-        }}
-      >
-        {item.city}
+        <Group position="apart">
+          <Text>{item.todo}</Text>
+          <Button
+            size="small"
+            color="dark"
+            variant="text"
+            onClick={() => onDelete(item.id)}
+          >
+            X
+          </Button>
+        </Group>
       </td>
     </tr>
   )

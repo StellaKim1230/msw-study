@@ -4,9 +4,10 @@ import { ListItem } from './ListItem'
 
 interface Props {
   items: ResponseItem[]
+  onDelete(id: string): void
 }
 
-export const Items = ({ items }: Props) => {
+export const Items = ({ items, onDelete }: Props) => {
   const theme = useCoTheme()
   return (
     <table>
@@ -19,59 +20,16 @@ export const Items = ({ items }: Props) => {
               borderBottom: `1px solid ${theme.palettes.gray[2]}`,
             }}
           >
-            아바타
-          </th>
-          <th
-            style={{
-              textAlign: 'left',
-              padding: 12,
-              borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-            }}
-          >
-            성
-          </th>
-          <th
-            style={{
-              textAlign: 'left',
-              padding: 12,
-              borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-            }}
-          >
-            이름
-          </th>
-          <th
-            style={{
-              textAlign: 'left',
-              padding: 12,
-              borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-            }}
-          >
-            나이
-          </th>
-          <th
-            style={{
-              textAlign: 'left',
-              padding: 12,
-              borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-            }}
-          >
-            이메일
-          </th>
-          <th
-            style={{
-              textAlign: 'left',
-              padding: 12,
-              borderBottom: `1px solid ${theme.palettes.gray[2]}`,
-            }}
-          >
-            도시
+            할일
           </th>
         </tr>
       </thead>
       <tbody>
         {items &&
           items.length > 0 &&
-          items.map((item) => <ListItem key={item.id} item={item} />)}
+          items.map((item) => (
+            <ListItem key={item.id} item={item} onDelete={onDelete} />
+          ))}
       </tbody>
     </table>
   )
