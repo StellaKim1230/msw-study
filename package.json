@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@co-design/core": "^0.7.14",
+    "@co-design/hooks": "^0.6.5",
     "@co-design/icons": "^0.6.14",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

@@ -13,7 +13,7 @@ export const getItems = rest.get('/items', (req, res, ctx) => {
   for (let i = 0; i < 10; i += 1) {
     const item = {
       id: v4(),
-      todo: faker.random.words(10),
+      todo: faker.random.words(100),
     }
 
     items.push(item)

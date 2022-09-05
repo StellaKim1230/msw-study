@@ -55,3 +55,9 @@ if (process.env.REACT_APP_WORKER === 'MOCK') {
 ## 결과
 
 - 화면
+
+// storybook => component 먼저 구성 => 로직 만들고 => mock 데이터로 받아서
+
+// root의 storybook을 실행시키면, 각 하위에 있는 subsystem의 스토리북을 읽어서 실행시킨다.
+
+// SDD => storybook 주도 개발로 간다.
