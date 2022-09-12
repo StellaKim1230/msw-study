@@ -1,5 +1,6 @@
 import { Container } from '@co-design/core'
 import { Routes, Route } from 'react-router-dom'
+import { CreatorsPage } from './pages/CreatorsPage'
 import { DocumentListPage } from './pages/DocumentListPage'
 import { TodoPage } from './pages/TodoPage'
 
@@ -12,6 +13,7 @@ function App() {
     >
       <Routes>
         <Route path="/documents" element={<DocumentListPage />}></Route>
+        <Route path="/creators" element={<CreatorsPage />}></Route>
         <Route path="/todo" element={<TodoPage />}></Route>
       </Routes>
     </Container>
