@@ -1,13 +1,13 @@
 import { useCoTheme } from '@co-design/core'
-import { ResponseItem } from '../../types/item'
+import { ResponseTodo } from '../../types/item'
 import { ListItem } from './ListItem'
 
 interface Props {
-  items: ResponseItem[]
+  todos: ResponseTodo[]
   onDelete(id: string): void
 }
 
-export const Items = ({ items, onDelete }: Props) => {
+export const Todos = ({ todos, onDelete }: Props) => {
   const theme = useCoTheme()
   return (
     <table>
@@ -25,10 +25,10 @@ export const Items = ({ items, onDelete }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {items &&
-          items.length > 0 &&
-          items.map((item) => (
-            <ListItem key={item.id} item={item} onDelete={onDelete} />
+        {todos &&
+          todos.length > 0 &&
+          todos.map((todo) => (
+            <ListItem key={todo.id} todo={todo} onDelete={onDelete} />
           ))}
       </tbody>
     </table>

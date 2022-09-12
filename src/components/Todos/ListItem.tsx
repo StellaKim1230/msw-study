@@ -1,15 +1,15 @@
 import { useCoTheme, Button, Group, Text } from '@co-design/core'
-import { ResponseItem } from '../../types/item'
+import { ResponseTodo } from '../../types/item'
 
 interface Props {
-  item: ResponseItem
+  todo: ResponseTodo
   onDelete(id: string): void
 }
 
-export const ListItem = ({ item, onDelete }: Props) => {
+export const ListItem = ({ todo, onDelete }: Props) => {
   const theme = useCoTheme()
   return (
-    <tr key={item.id}>
+    <tr key={todo.id}>
       <td
         style={{
           textAlign: 'left',
@@ -18,12 +18,12 @@ export const ListItem = ({ item, onDelete }: Props) => {
         }}
       >
         <Group position="apart">
-          <Text>{item.todo}</Text>
+          <Text>{todo.todo}</Text>
           <Button
             size="small"
             color="dark"
             variant="text"
-            onClick={() => onDelete(item.id)}
+            onClick={() => onDelete(todo.id)}
           >
             X
           </Button>

@@ -1,4 +1,4 @@
-export interface ResponseItem {
+export interface ResponseTodo {
   id: string
   todo: string
 }
